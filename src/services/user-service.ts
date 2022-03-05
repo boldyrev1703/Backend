@@ -1,6 +1,8 @@
-import userDao from '@daos/user-dao';
-import { IUser } from '@models/user-model';
-import { UserNotFoundError } from '@shared/errors';
+import userDao from "../daos/user-dao";
+import { User } from "../entity/User";
+import { IUser } from "../models/user-model";
+import { UserNotFoundError } from "../shared/errors";
+
 
 
 
@@ -54,6 +56,13 @@ async function deleteOne(id: number): Promise<void> {
     return userDao.delete(id);
 }
 
+async function isUser(login: string) {
+    const user = await User.findOne({login: login});
+    if (!user) {
+        throw new Error('User not found');
+    }
+    return user;
+}
 
 // Export default
 export default {
@@ -61,4 +70,5 @@ export default {
     addOne,
     updateOne,
     delete: deleteOne,
+    isUser: isUser,
 } as const;

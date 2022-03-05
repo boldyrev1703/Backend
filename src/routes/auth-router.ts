@@ -1,8 +1,7 @@
-
-import authService from '@services/auth-service';
-import { ParamMissingError } from '@shared/errors';
 import { Request, Response, Router } from 'express';
 import StatusCodes from 'http-status-codes';
+import authService from '../services/auth-service';
+import { ParamMissingError } from '../shared/errors';
 
 
 // Constants

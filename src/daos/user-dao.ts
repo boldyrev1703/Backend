@@ -1,5 +1,5 @@
-import { IUser } from '@models/user-model';
-import { getRandomInt } from '@shared/functions';
+import { IUser } from '../models/user-model';
+import { getRandomInt } from '../shared/functions';
 import orm from './mock-orm';
 
 

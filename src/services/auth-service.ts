@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
-
-import userDao from '@daos/user-dao';
-import jwtUtil from '@util/jwt-util';
-import { UnauthorizedError } from '@shared/errors';
-
+import userDao from '../daos/user-dao';
+import { UnauthorizedError } from '../shared/errors';
+import jwtUtil from '../util/jwt-util';
+import isUser from '../services/user-service';
+import { User } from '../entity/User';
 
 
 /**
@@ -15,21 +15,23 @@ import { UnauthorizedError } from '@shared/errors';
  */
 async function login(email: string, password: string): Promise<string> {
     // Fetch user
-    const user = await userDao.getOne(email);
+    // const user = await userDao.getOne(email);
+    const user = await User.findOne({login: email});
+    console.log(user);
+    
     if (!user) {
         throw new UnauthorizedError();
     }
     // Check password
-    const pwdPassed = await bcrypt.compare(password, user.pwdHash);
-    if (!pwdPassed) {
-        throw new UnauthorizedError();
-    }
+    // const pwdPassed = await bcrypt.compare(password, user.password);
+    // if (!pwdPassed) {
+    //     throw new UnauthorizedError();
+    // }
     // Setup Admin Cookie
     return jwtUtil.sign({
         id: user.id,
-        email: user.name,
-        name: user.name,
-        role: user.role,
+        login: user.login,
+        role: 1,
     });
 }
 
