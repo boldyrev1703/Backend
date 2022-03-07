@@ -4,17 +4,42 @@
         <meta charset="UTF-8">
         <title>Users</title>
         <link rel="stylesheet" type="text/css" href="/stylesheets/users.css" />
+        <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css" />
     </head>
     <body>
+        <div class="navigation">
+            <ul class="navigation__list">
+                <li class="navigation__list-item">
+                    <a href="#" class="navigation__list-link navigation__list-link_active" data-link="/">
+                        Пользователи
+                    </a>
+                </li>
+                <li class="navigation__list-item">
+                    <a href="#" class="navigation__list-link" data-link="/contacts">
+                        Контактная информация
+                    </a>
+                </li>
+                <li class="navigation__list-item">
+                    <a href="#" class="navigation__list-link" data-link="/main">
+                        Главный экран
+                    </a>
+                </li>
+                <li class="navigation__list-item">
+                    <a href="#" class="navigation__list-link" data-link="/history">
+                        История
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <!-- Add Users -->
         <div class="users-column add-user-col">
             <div class="column-header">Add User:</div>
             <div>
-                <input id="name-input" placeholder="Name">
+                <input id="name-input" placeholder="Login">
             </div>
             <div>
-                <input id="email-input" placeholder="Email">
+                <input id="email-input" placeholder="Password">
             </div>
             <div>
                 <button id="add-user-btn">Add</button>
@@ -35,4 +60,5 @@
     </body>
     <script src="scripts/http.js"></script>
     <script src="scripts/users.js"></script>
+    <script src="scripts/navigate.js"></script>
 </html>

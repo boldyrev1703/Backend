@@ -1,7 +1,9 @@
 import StatusCodes from 'http-status-codes';
 import { Request, Response, Router } from 'express';
-import userService from '../services/user-service';
 import { ParamMissingError } from '../shared/errors';
+import { User } from '../entity/User';
+import bcrypt from 'bcrypt';
+
 
 
 
@@ -24,7 +26,7 @@ export const p = {
  * Get all users.
  */
 router.get(p.get, async (_: Request, res: Response) => {
-    const users = await userService.getAll();
+    const users = await User.find();
     return res.status(OK).json({users});
 });
 
@@ -34,13 +36,18 @@ router.get(p.get, async (_: Request, res: Response) => {
  */
 router.post(p.add, async (req: Request, res: Response) => {
     const { user } = req.body;
-    // Check param
     if (!user) {
         throw new ParamMissingError();
     }
-    // Fetch data
-    await userService.addOne(user);
-    return res.status(CREATED).end();
+    try {
+        bcrypt.hash(user.password, 10).then(async function(hash) {
+            await User.save({...user, password: hash});        
+            return res.status(CREATED).end();
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
 });
 
 
@@ -53,9 +60,14 @@ router.put(p.update, async (req: Request, res: Response) => {
     if (!user) {
         throw new ParamMissingError();
     }
-    // Fetch data
-    await userService.updateOne(user);
-    return res.status(OK).end();
+    try {
+        bcrypt.hash(user.password, 10).then(async function(hash) {
+            await User.update(user.id, {...user, password: hash});
+            return res.status(OK).end();
+        });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 
@@ -69,7 +81,7 @@ router.delete(p.delete, async (req: Request, res: Response) => {
         throw new ParamMissingError();
     }
     // Fetch data
-    await userService.delete(Number(id));
+    await User.delete(Number(id));
     return res.status(OK).end();
 });
 

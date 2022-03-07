@@ -1,4 +1,4 @@
-var Http = (function () {
+const Http = (function () {
     // Setup request for json
     var getOptions = function (verb, data) {
         var options = {
@@ -17,16 +17,16 @@ var Http = (function () {
     // Set Http methods
     return {
         Get: function (path) {
-            return fetch(path, getOptions('GET'))
+            return fetch('/api' + path, getOptions('GET'))
         },
         Post: function (path, data) {
-            return fetch(path, getOptions('POST', data));
+            return fetch('/api' + path, getOptions('POST', data));
         },
         Put: function (path, data) {
-            return fetch(path, getOptions('PUT', data));
+            return fetch('/api' + path, getOptions('PUT', data));
         },
         Delete: function (path) {
-            return fetch(path, getOptions('DELETE'));
+            return fetch('/api' + path, getOptions('DELETE'));
         }
     };
 })();

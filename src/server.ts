@@ -58,6 +58,7 @@ app.use((err: Error | CustomError, _: Request, res: Response, __: NextFunction) 
 const viewsDir = path.join(__dirname, 'views');
 app.set('views', viewsDir);
 
+
 // Set static directory (js and css).
 const staticDir = path.join(__dirname, 'public');
 app.use(express.static(staticDir));
@@ -77,7 +78,33 @@ app.get('/users', (req: Request, res: Response) => {
     }
 });
 
+// Redirect to login if not logged in.
+app.get('/contacts', (req: Request, res: Response) => {
+    const jwt = req.signedCookies[cookieProps.key];
+    if (!jwt) {
+        res.redirect('/');
+    } else {
+        res.sendFile('contacts.html', {root: viewsDir});
+    }
+});
 
+app.get('/main', (req: Request, res: Response) => {
+    const jwt = req.signedCookies[cookieProps.key];
+    if (!jwt) {
+        res.redirect('/');
+    } else {
+        res.sendFile('mainwindow.html', {root: viewsDir});
+    }
+});
+
+app.get('/history', (req: Request, res: Response) => {
+    const jwt = req.signedCookies[cookieProps.key];
+    if (!jwt) {
+        res.redirect('/');
+    } else {
+        res.sendFile('history.html', {root: viewsDir});
+    }
+});
 app.listen(3000, '0.0.0.0');
 
 

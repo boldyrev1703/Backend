@@ -1,0 +1,25 @@
+body {
+    padding: 100px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.navigation__list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+}
+
+.navigation__list-item {
+    margin-right: 16px;
+}
+
+.navigation__list-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.navigation__list-link_active {
+    text-decoration: underline;
+    font-weight: 700;
+}
+

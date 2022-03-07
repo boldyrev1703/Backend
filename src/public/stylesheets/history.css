@@ -1,0 +1,39 @@
+
+.history__edit {
+    display: none;
+}
+
+.history__edit_active {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+}
+
+.history__input {
+    margin-bottom: 16px;
+}
+
+.history-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-content_active {
+    display: none;
+}
+
+.history__btn{
+    margin-right: 16px; 
+}
+
+.history__btn-submit {
+    display: none;
+}
+
+.history__btn-submit_active {
+    display: block;
+}
+
+.historyBlock {
+    margin-bottom: 16px;
+}

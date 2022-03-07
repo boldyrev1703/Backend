@@ -1,0 +1,33 @@
+.hero__btn-submit {
+    display: none;
+}
+
+.hero__btn-submit_active {
+    display: block;
+}
+
+.hero__btn {
+    margin-right: 16px;
+}
+
+.hero-content_active-edit {
+    display: none;
+}
+
+.hero-input {
+    margin-bottom: 16px;
+}
+
+.hero-edit {
+    display: none;
+    flex-direction: column;
+    max-width: 50%;
+}
+
+.hero-edit_active {
+    display: flex;
+}
+
+.hero-input-content, .hero-input-subContent {
+    margin-bottom: 16px;
+}

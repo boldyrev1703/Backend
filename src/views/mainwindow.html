@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/hero.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="navigation">
+        <ul class="navigation__list">
+            <li class="navigation__list-item">
+                <a href="#" class="navigation__list-link" data-link="/users">
+                    Пользователи
+                </a>
+            </li>
+            <li class="navigation__list-item">
+                <a href="#" class="navigation__list-link" data-link="/contacts">
+                    Контактная информация
+                </a>
+            </li>
+            <li class="navigation__list-item">
+                <a href="#" class="navigation__list-link navigation__list-link_active" data-link="/main">
+                    Главный экран
+                </a>
+            </li>
+            <li class="navigation__list-item">
+                <a href="#" class="navigation__list-link" data-link="/history">
+                    История
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="hero">
+        <p class="hero__content hero-content"></p>
+        <p class="hero__subVontent hero-content"></p>
+        <div class="hero-edit">
+            <input type="text" class="hero-input-content">
+            <textarea type="text" class="hero-input-subContent"></textarea>
+        </div>
+        <div style="display: flex;">
+            <button class="hero__btn">Редактировать</button>
+            <button class="hero__btn-submit">submit</button>
+        </div>
+    </div>
+
+    <script src="scripts/http.js"></script>
+    <script src="scripts/hero.js"></script>
+    <script src="scripts/navigate.js"></script>
+</body>
+</html>

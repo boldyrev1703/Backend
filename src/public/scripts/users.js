@@ -6,12 +6,12 @@ displayUsers();
 
 
 function displayUsers() {
-    Http.Get('/api/users/all')
+    Http.Get('/users/all')
         .then(response => response.json())
         .then((response) => {
-            var allUsers = response.users;
+            const allUsers = response.users;
             // Empty the anchor
-            var allUsersAnchor = document.getElementById('all-users-anchor');
+            const allUsersAnchor = document.getElementById('all-users-anchor');
             allUsersAnchor.innerHTML = '';
             // Append users to anchor
             allUsers.forEach((user) => {
@@ -25,8 +25,7 @@ function getUserDisplayEle(user) {
     return `<div class="user-display-ele">
 
         <div class="normal-view">
-            <div>Name: ${user.name}</div>
-            <div>Email: ${user.email}</div>
+            <div>login: ${user.login}</div>
             <button class="edit-user-btn" data-user-id="${user.id}">
                 Edit
             </button>
@@ -36,11 +35,15 @@ function getUserDisplayEle(user) {
         </div>
         
         <div class="edit-view">
-            <div>
-                Name: <input class="name-edit-input" value="${user.name}">
+            <div style = '
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;'
+            >
+                Login: <input class="login-edit-input" value="${user.login}">
             </div>
             <div>
-                Email: <input class="email-edit-input" value="${user.email}">
+                Password: <input class="password-edit-input">
             </div>
             <button class="submit-edit-btn" data-user-id="${user.id}">
                 Submit
@@ -59,7 +62,7 @@ function getUserDisplayEle(user) {
 
 document.addEventListener('click', function (event) {
     event.preventDefault();
-    var ele = event.target;
+    const ele = event.target;
     if (ele.matches('#add-user-btn')) {
         addUser();
     } else if (ele.matches('.edit-user-btn')) {
@@ -77,15 +80,15 @@ document.addEventListener('click', function (event) {
 
 
 function addUser() {
-    var nameInput = document.getElementById('name-input');
-    var emailInput = document.getElementById('email-input');
-    var data = {
+    const loginInput = document.getElementById('name-input');
+    const passwordInput = document.getElementById('email-input');
+    const data = {
         user: {
-            name: nameInput.value,
-            email: emailInput.value
+            login: loginInput.value,
+            password: passwordInput.value
         },
     };
-    Http.Post('/api/users/add', data)
+    Http.Post('/users/add', data)
         .then(() => {
             displayUsers();
         })
@@ -93,34 +96,34 @@ function addUser() {
 
 
 function showEditView(userEle) {
-    var normalView = userEle.getElementsByClassName('normal-view')[0];
-    var editView = userEle.getElementsByClassName('edit-view')[0];
+    const normalView = userEle.getElementsByClassName('normal-view')[0];
+    const editView = userEle.getElementsByClassName('edit-view')[0];
     normalView.style.display = 'none';
     editView.style.display = 'block';
 }
 
 
 function cancelEdit(userEle) {
-    var normalView = userEle.getElementsByClassName('normal-view')[0];
-    var editView = userEle.getElementsByClassName('edit-view')[0];
+    const normalView = userEle.getElementsByClassName('normal-view')[0];
+    const editView = userEle.getElementsByClassName('edit-view')[0];
     normalView.style.display = 'block';
     editView.style.display = 'none';
 }
 
 
 function submitEdit(ele) {
-    var userEle = ele.parentNode.parentNode;
-    var nameInput = userEle.getElementsByClassName('name-edit-input')[0];
-    var emailInput = userEle.getElementsByClassName('email-edit-input')[0];
-    var id = ele.getAttribute('data-user-id');
-    var data = {
+    const userEle = ele.parentNode.parentNode;
+    const login = userEle.getElementsByClassName('login-edit-input')[0];
+    const password = userEle.getElementsByClassName('password-edit-input')[0];
+    const id = ele.getAttribute('data-user-id');
+    const data = {
         user: {
-            name: nameInput.value,
-            email: emailInput.value,
+            login: login.value,
+            password: password.value,
             id: Number(id)
         }
     };
-	Http.Put('/api/users/update', data)
+	Http.Put('/users/update', data)
         .then(() => {
             displayUsers();
         })
@@ -128,8 +131,8 @@ function submitEdit(ele) {
 
 
 function deleteUser(ele) {
-    var id = ele.getAttribute('data-user-id');
-	Http.Delete('/api/users/delete/' + id)
+    const id = ele.getAttribute('data-user-id');
+	Http.Delete('/users/delete/' + id)
         .then(() => {
             displayUsers();
         })
@@ -140,7 +143,7 @@ function deleteUser(ele) {
  ******************************************************************************/
 
 function logoutUser() {
-    Http.Get('/api/auth/logout')
+    Http.Get('/auth/logout')
         .then(() => {
             window.location.href = '/';
         })

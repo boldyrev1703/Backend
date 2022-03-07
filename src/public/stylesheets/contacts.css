@@ -1,0 +1,24 @@
+body {
+    padding: 100px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.contacts__content {
+    margin-bottom: 16px;
+}
+
+.contacts__btn-edit {
+    margin-left: 8px;
+}
+
+.contacts__body_active-edit {
+    display: none;
+}
+.edit {
+    display: none;
+    margin: 8px 0;
+}
+
+.edit_active {
+    display: flex;
+}

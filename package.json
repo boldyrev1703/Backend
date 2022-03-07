@@ -7,7 +7,15 @@
     "start": "node -r module-alias/register ./dist --env=production",
     "start:dev": "nodemon",
     "test": "nodemon --config ./spec/nodemon.json",
-    "test:no-reloading": "./node_modules/.bin/ts-node --files -r tsconfig-paths/register ./spec"
+    "test:no-reloading": "./node_modules/.bin/ts-node --files -r tsconfig-paths/register ./spec",
+
+    "migration:create": "ts-node ./node_modules/.bin/typeorm migration:create",
+    "migration:generate": "ts-node ./node_modules/.bin/typeorm migration:generate",
+    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
+    "migration:revert": "ts-node ./node_modules/.bin/typeorm migration:revert",
+    "seed:create": "ts-node ./node_modules/.bin/typeorm migration:create -c seed",
+    "seed:run": "ts-node ./node_modules/.bin/typeorm migration:run -c seed",
+    "seed:revert": "ts-node ./node_modules/.bin/typeorm migration:revert -c seed"
   },
   "nodemonConfig": {
     "watch": [
