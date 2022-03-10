@@ -1,6 +1,7 @@
 import StatusCodes from 'http-status-codes';
 import { Request, Response, Router } from 'express';
 import { Hero } from '../entity/Hero';
+import { adminMw } from './middleware';
 
 
 
@@ -23,7 +24,7 @@ router.get(p.get, async (_: Request, res: Response) => {
 });
 
 
-router.put(p.update, async (req: Request, res: Response) => {
+router.put(p.update, adminMw, async (req: Request, res: Response) => {
     const hero  = req.body;
 
     await Hero.update(hero.id, hero)

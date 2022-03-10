@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.content_wrap {
+    margin: 32px 0 32px 0;
+}
+
+.btn {
+    min-width: 150px;
+    border: none;
+    background: #2D2B29;
+    color: #FFF;
+    text-transform: uppercase;
+    padding: 12px 12px;
+    border-radius: 8px;
+    margin: 0;
+}
+
+.input_base {
+    border: none;
+    max-width: 300px;
+    background: #cfcfcf;
+    padding: 12px 8px;
+    color: #333;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* UTILS */
+
+.mr-1 {
+    margin-right: 8px;
+}
+
+.mt-1 {
+    margin-top: 8px;
+}
+
+.min-h-7 {
+    min-height: 70px;
+}

@@ -26,10 +26,10 @@ function getUserDisplayEle(user) {
 
         <div class="normal-view">
             <div>login: ${user.login}</div>
-            <button class="edit-user-btn" data-user-id="${user.id}">
+            <button class="edit-user-btn btn" data-user-id="${user.id}">
                 Edit
             </button>
-            <button class="delete-user-btn" data-user-id="${user.id}">
+            <button class="delete-user-btn btn" data-user-id="${user.id}">
                 Delete
             </button>
         </div>
@@ -40,15 +40,18 @@ function getUserDisplayEle(user) {
                 justify-content: space-between;
                 margin-bottom: 8px;'
             >
-                Login: <input class="login-edit-input" value="${user.login}">
+                Login: <input class="login-edit-input input_base" value="${user.login}">
             </div>
-            <div>
-                Password: <input class="password-edit-input">
+            <div style = '
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;'>
+                Password: <input class="password-edit-inpu input_base" placeholder="Password" >
             </div>
-            <button class="submit-edit-btn" data-user-id="${user.id}">
+            <button class="submit-edit-btn btn" data-user-id="${user.id}">
                 Submit
             </button>
-            <button class="cancel-edit-btn" data-user-id="${user.id}">
+            <button class="cancel-edit-btn btn" data-user-id="${user.id}">
                 Cancel
             </button>
         </div>

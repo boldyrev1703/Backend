@@ -4,6 +4,7 @@ import { ParamMissingError } from '../shared/errors';
 import { User } from '../entity/User';
 import bcrypt from 'bcrypt';
 import { History } from '../entity/History';
+import { adminMw } from './middleware';
 
 
 
@@ -24,7 +25,7 @@ router.get(p.get, async (_: Request, res: Response) => {
     return res.status(OK).json({history});
 });
 
-router.put(p.update, async (req: Request, res: Response) => {
+router.put(p.update, adminMw, async (req: Request, res: Response) => {
     const history  = req.body;
 
     await History.update(history.id, history)

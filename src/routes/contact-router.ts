@@ -2,6 +2,7 @@ import StatusCodes from 'http-status-codes';
 import { Request, Response, Router } from 'express';
 import userService from '../services/user-service';
 import { Contact } from '../entity/Contact';
+import { adminMw } from './middleware';
 
 
 
@@ -23,8 +24,7 @@ router.get(p.get, async (_: Request, res: Response) => {
     return res.status(OK).json({contacts});
 });
 
-
-router.put(p.update, async (req: Request, res: Response) => {
+router.put(p.update, adminMw, async (req: Request, res: Response) => {
     const contacts  = req.body;
 
     await Contact.update(contacts.id, contacts)

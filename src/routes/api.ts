@@ -15,9 +15,9 @@ apiRouter.use('/auth', authRouter);
 
 // 
 apiRouter.use('/users', adminMw, userRouter);
-apiRouter.use('/contacts', adminMw, contactsRouter);
-apiRouter.use('/hero', adminMw, heroRouter);
-apiRouter.use('/history', adminMw, historyRouter);
+apiRouter.use('/contacts', contactsRouter);
+apiRouter.use('/hero', heroRouter);
+apiRouter.use('/history', historyRouter);
 
 // Export default
 export default apiRouter;

@@ -4,6 +4,7 @@ import path from 'path';
 import helmet from 'helmet';
 import StatusCodes from 'http-status-codes';
 import express, { NextFunction, Request, Response } from 'express';
+import cors from 'cors';
 
 import 'express-async-errors';
 
@@ -11,8 +12,6 @@ import BaseRouter from './routes/api';
 import logger from 'jet-logger';
 import { cookieProps } from './routes/auth-router';
 import { CustomError } from './shared/errors';
-// import { cookieProps } from '@routes/auth-router';
-// import { CustomError } from '@shared/errors';
 
 const app = express();
 
@@ -35,7 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV === 'production') {
     app.use(helmet());
 }
-
+app.use(cors());
 // Add APIs
 app.use('/api', BaseRouter);
 

@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Users</title>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/users.css" />
-        <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css" />
-    </head>
-    <body>
-        <div class="navigation">
-            <ul class="navigation__list">
-                <li class="navigation__list-item">
-                    <a href="#" class="navigation__list-link navigation__list-link_active" data-link="/">
-                        Пользователи
-                    </a>
-                </li>
-                <li class="navigation__list-item">
-                    <a href="#" class="navigation__list-link" data-link="/contacts">
-                        Контактная информация
-                    </a>
-                </li>
-                <li class="navigation__list-item">
-                    <a href="#" class="navigation__list-link" data-link="/main">
-                        Главный экран
-                    </a>
-                </li>
-                <li class="navigation__list-item">
-                    <a href="#" class="navigation__list-link" data-link="/history">
-                        История
-                    </a>
-                </li>
-            </ul>
-        </div>
 
-        <!-- Add Users -->
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/users.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/base.css" />
+</head>
+
+<body>
+    <div class="navigation">
+        <ul class="navigation__list">
+            <li class="navigation__list-item">
+                <a href="#" class="navigation__list-link navigation__list-link_active" data-link="/">
+                    Пользователи
+                </a>
+            </li>
+            <li class="navigation__list-item">
+                <a href="#" class="navigation__list-link" data-link="/contacts">
+                    Контактная информация
+                </a>
+            </li>
+            <li class="navigation__list-item">
+                <a href="#" class="navigation__list-link" data-link="/main">
+                    Главный экран
+                </a>
+            </li>
+            <li class="navigation__list-item">
+                <a href="#" class="navigation__list-link" data-link="/history">
+                    История
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Add Users -->
+    <div class="content_wrap">
+
         <div class="users-column add-user-col">
             <div class="column-header">Add User:</div>
             <div>
-                <input id="name-input" placeholder="Login">
+                <input id="name-input" class="input_base" placeholder="Login">
             </div>
             <div>
-                <input id="email-input" placeholder="Password">
+                <input id="email-input" class="input_base" placeholder="Password">
             </div>
             <div>
-                <button id="add-user-btn">Add</button>
+                <button id="add-user-btn" class="btn">Add</button>
             </div>
             <div>
-                <button id="logout-btn">Logout</button>
+                <button id="logout-btn" class="btn">Logout</button>
             </div>
         </div>
 
@@ -55,10 +60,12 @@
             <div id="all-users-anchor"></div>
         </div>
 
+    </div>
 
 
-    </body>
-    <script src="scripts/http.js"></script>
-    <script src="scripts/users.js"></script>
-    <script src="scripts/navigate.js"></script>
+</body>
+<script src="scripts/http.js"></script>
+<script src="scripts/users.js"></script>
+<script src="scripts/navigate.js"></script>
+
 </html>
