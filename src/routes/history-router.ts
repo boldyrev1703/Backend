@@ -27,7 +27,8 @@ router.get(p.get, async (_: Request, res: Response) => {
 
 router.put(p.update, adminMw, async (req: Request, res: Response) => {
     const history  = req.body;
-
+    console.log(history);
+    
     await History.update(history.id, history)
     return res.status(OK).end();
 });

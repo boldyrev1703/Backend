@@ -37,8 +37,6 @@ document.addEventListener('click', function (event) {
     if (ele.matches('.history__btn')) {
         showEdit(ele.parentNode.parentNode);
     } else if (ele.matches('.history__btn-submit')) {
-        // deleteUser(ele);
-        console.log('WTF X2');
         sendEdit(ele.parentNode.parentNode);
     } 
 }, false)
@@ -53,11 +51,11 @@ const showEdit = el => {
 
 const sendEdit = el => {
     const data = {
-        id: document.querySelector('.historyBlock').dataset.id,
-        yearDate: document.querySelector('.history__input_yearDate').value,
-        title: document.querySelector('.history__input_title').value,
-        content: document.querySelector('.history__input_content').value,
-        subContent: document.querySelector('.history__input_subContent').value,
+        id: el.dataset.id,
+        yearDate: el.querySelector('.history__input_yearDate').value,
+        title: el.querySelector('.history__input_title').value,
+        content: el.querySelector('.history__input_content').value,
+        subContent: el.querySelector('.history__input_subContent').value,
     };
 
     Http.Put('/history/update', data)

@@ -46,7 +46,7 @@ function getUserDisplayEle(user) {
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 8px;'>
-                Password: <input class="password-edit-inpu input_base" placeholder="Password" >
+                Password: <input class="password-edit-input input_base" placeholder="Password" >
             </div>
             <button class="submit-edit-btn btn" data-user-id="${user.id}">
                 Submit
